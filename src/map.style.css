@@ -1,0 +1,14 @@
+.mapEl {
+  padding: 0;
+  margin-top: 15px;
+  height: 75%;
+  width: 100%;
+}
+
+.esri-view .esri-view-surface--inset-outline:focus::after {
+  outline: none !important;
+}
+
+.legend{
+  margin-right: 15px;
+}
