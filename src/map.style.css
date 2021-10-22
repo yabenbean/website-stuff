@@ -1,6 +1,8 @@
 .mapEl {
+  align-items: center;
   padding: 0;
   margin-top: 15px;
+  margin-left: 8vh;
   height: 75%;
   width: 100%;
 }
@@ -9,6 +11,12 @@
   outline: none !important;
 }
 
-.legend{
-  margin-right: 15px;
+.legend {
+  position: absolute;
+  right: 15px;
+  
+}
+
+.legend {
+  bottom: 30px;
 }

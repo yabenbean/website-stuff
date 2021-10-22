@@ -15,5 +15,4 @@ const POLLUTION_DATA = [
   }
 ];
 
-
-export default POLLUTION_DATA
+export default POLLUTION_DATA;

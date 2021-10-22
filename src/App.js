@@ -6,7 +6,7 @@ import NavbarComp from "./Components/NavbarComp";
 import Insight from "./Components/Insight";
 import Home from "./Components/pages/Home";
 import Dashboard from "./Components/dashboard/dashboard.component"
-import Forecast from './forecast';
+import Forecast from "./forecast"
 
 function App() {
   loadCss(); 

@@ -11,15 +11,16 @@ import Legend from '@arcgis/core/widgets/Legend';
 
 import POLLUTION_DATA from "./pollution.data.js";
 
+import "./map.style.css"
+import { Accordion } from 'react-bootstrap';
+
 
   const styles =  {
   container: {
     height: '70vh',
-    width: '95vw'
+    width: '85vw'
   },
    mapEl: {
-    padding: 0,
-    margin: 0,
     height: '100%',
     width: '100%'
   },
@@ -47,13 +48,15 @@ import POLLUTION_DATA from "./pollution.data.js";
                   map,
                   container: MapEl.current,
                   center: [-118.2437, 34.0522],
-                  zoom: 8,
-                  minScale: 0,
-                  maxScale: 10000,
+                  zoom: 7,
+                  
                 });
-                const legend = new Legend({
-                  view: view
-                })
+                let legend = new Legend({
+                 
+                  view: view,
+                
+                  
+                });
                 
           
                 state.data.map((data) => {
@@ -72,15 +75,16 @@ import POLLUTION_DATA from "./pollution.data.js";
                 });
           
                 view.ui.move("zoom", "top-right");
-                view.ui.add(legend, "bottom-right");
-
-                map.addMany(layers);
-              }
+                view.ui.add(legend ,"bottom-left");
+                 map.addMany(layers);
+             }
         }) 
         
         return(
-          <div style={styles.container} ref={MapEl}>
-            <div style={ styles.mapEl } ref={MapEl}>
+          
+          <div class="container mt-5" style={styles.container}>
+           
+            <div class="container m-2" style={ styles.mapEl } ref={MapEl}>
               
             </div>
           </div>

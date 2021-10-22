@@ -77,9 +77,12 @@ export default class OpenWeatherMapHistorical extends Component{
         const options = {
             animationEnabled: true,
             exportEnabled: true,
-            theme: "light2",
+            
+            theme: "light1",
+           
             title: {
-                text: "Air Quality Measured in the Past 3 Days in General Los Angeles (OpenWeatherMap)"
+                text: "Air Quality Measured in the Past 3 Days in General Los Angeles"
+                
             },
             axisX:{
                 title: "Time",
@@ -87,13 +90,13 @@ export default class OpenWeatherMapHistorical extends Component{
                 intervalType: "hour",
                 valueFormatString: "MMM DD hh:mm TT K",
                 labelAngel: -20,
-                labelFontSize: 16,
+                labelFontSize: 11,
             },
             axisY:{
                 title: "Measured Level of Air Pollutant",
-                interval: 25,
-                labelFontSize: 12,
-                tickLength: 20
+                interval: 50,
+                labelFontSize: 10,
+                tickLength: 15
             },
             legend:{
                 cursor: "pointer",

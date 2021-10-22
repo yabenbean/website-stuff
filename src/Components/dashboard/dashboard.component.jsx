@@ -15,7 +15,7 @@ import LincolnHeightsLive from './graphs/live/lincolnheights-live.component.jsx'
 import LincolnHeightsHistorical from './graphs/historical/lincolnheights-historical.component.jsx';
 import MagnoliaLive from './graphs/live/magnolia-live.component.jsx';
 import MagnoliaHistorical from './graphs/historical/magnolia-historical.component.jsx';
-
+import "./dashboard.css"
 
 export default class Dashboard extends Component {
 
@@ -34,8 +34,8 @@ export default class Dashboard extends Component {
     render() {
 
         return (
-            <div>
-                <div className="col-8">
+            <div class="container mt-3 background ">
+                <div class="center " class="title" className="col-12">
                     <Tabs defaultActiveKey={
                             this.state.key
                         }
@@ -54,8 +54,12 @@ export default class Dashboard extends Component {
                 </div>
 
                 <br/>
+                <br/>
+                <br/>
 
-                <div className="col-8">
+
+
+                <div class="center"className="col-12">
                     <Tabs defaultActiveKey={
                             this.state.key
                         }
@@ -65,19 +69,25 @@ export default class Dashboard extends Component {
                         onSelect={
                             (k) => this.changeKey(k)
                     }>
-                        <Tab eventKey='General' title='General Los Angeles'><OpenWeatherMapHistorical/></Tab>
-                        <Tab eventKey='Broadway' title='3rd and Broadway'><BroadwayHistorical/></Tab>
-                        <Tab eventKey='Coliseum' title='Memorial Coliseum'><MemorialColiseumHistorical/></Tab>
-                        <Tab eventKey='Lincoln' title='Lincoln Heights'><LincolnHeightsHistorical/></Tab>
-                        <Tab eventKey='Magnolia' title='7th and Magnolia'><MagnoliaHistorical/></Tab>
+                
+                        <Tab eventKey='General' ><OpenWeatherMapHistorical/></Tab>
+                        <Tab eventKey='Broadway'><BroadwayHistorical/></Tab>
+                        <Tab eventKey='Coliseum' ><MemorialColiseumHistorical/></Tab>
+                        <Tab eventKey='Lincoln' ><LincolnHeightsHistorical/></Tab> 
+                        <Tab eventKey='Magnolia'><MagnoliaHistorical/></Tab>
+
                     </Tabs>
                 </div>
                 <br/>
+                <br/>
+                <br/>
 
 
-                <div className="col-8">
+                <div class="center" className="col-12">
                 <AirQualityLineChart/>
                 </div>
+                <br/>
+                <br/>
 
             </div>
         );

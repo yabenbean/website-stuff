@@ -10,80 +10,87 @@ import LayerList from "@arcgis/core/widgets/LayerList";
 import Legend from '@arcgis/core/widgets/Legend';
 
 import GEOTIFF_DATA from "./geotiff.data.js";
-import POLLUTION_DATA from './pollution.data.js';
 
 
-  const styles =  {
+const styles =  {
   container: {
-    height: '70vh',
-    width: '95vw'
+    height: '120vh',
+    width: '60vw'
   },
-   mapEl: {
-    padding: 0,
-    margin: 0,
+   mapDiv: {
     height: '100%',
     width: '100%'
   },
 }
-  function ForecastMap(){
-    const [state, setState] = useState({
-      
-        data: GEOTIFF_DATA,
+
+function ForecastMap({ id }) {
+  const [state, setState] = useState({
+    id: id,
+    data: GEOTIFF_DATA,
+  });
+
+  if (id !== state.id) {
+    setState((prevState) => {
+      return {
+        ...prevState,
+        id: id,
+      };
+    });
+  }
+
+  const layers = [];
+  // console.log(state);
+  // console.log(state.id);
+
+  const mapDiv = useRef(null);
+
+  useEffect(() => {
+    if (mapDiv.current) {
+      // Initialize Map
+      const map = new ArcGISMap({
+        basemap: "topo-vector",
       });
-    
-    const layers = [];
-    
-    const MapEl=useRef(null)
 
-    useEffect(
-        ()=>{
-             
-            if (MapEl.current) {
-                // Initialize Map
-                const map = new ArcGISMap({
-                  basemap: "topo-vector",
-                });
-          
-                const view = new MapView({
-                  map,
-                  container: MapEl.current,
-                  center: [-118.2437, 34.0522],
-                  zoom: 8,
-                  minScale: 0,
-                  maxScale: 10000,
-                });
-                const legend = new Legend({
-                  view: view
-                })
-                
-          
-                state.data.map((data) => {
-                  if (state.id === data.id) {
-                    data.layers.map((layer) => {
-                      layers.push(layer);
-                    });
-                  }
-                });
-          
-                view.when(() => {
-                  new LayerList({
-                    view: view,
-                    container: "layerlist"
-                  });
-                });
-          
-                view.ui.move("zoom", "top-right");
-                view.ui.add(legend, "bottom-right");
+      const view = new MapView({
+        map,
+        container: mapDiv.current,
+        center: [-118.1, 33.75],
+        zoom: 10,
+      });
 
-                map.addMany(layers);
-              }
-        }) 
+      const legend = new Legend({
+        view: view
+      })
+
+      state.data.map((data) => {
+        if (state.id === data.id) {
+          data.layers.map((layer) => {
+            layers.push(layer);
+          });
+        }
+      });
+
+      view.when(() => {
+        new LayerList({
+          view: view,
+          container: "layerlist"+id,
+        });
+      });
+
+      view.ui.move("zoom", "top-right");
+      view.ui.add(legend, "bottom-left");
+      map.addMany(layers);
+    }
+  }, [state]);
         
         return(
-          <div style={styles.container} ref={MapEl}>
-            <div style={ styles.mapEl } ref={MapEl}>
-              
+            <div class="container mt-3 col-12" style={styles.container}>
+          
+            <div class="container col-10" style={ styles.mapDiv} ref={mapDiv} >
+           
+        
             </div>
+          
           </div>
     )   
 }

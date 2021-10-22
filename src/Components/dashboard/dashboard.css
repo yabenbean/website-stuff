@@ -1,0 +1,21 @@
+.center {
+    display: flex;
+    justify-content: center;
+    background: blue;
+    }
+
+.center1{
+    display: flex;
+    justify-content: center;
+
+}
+.border{
+    border-bottom: 5vh solid black;
+}
+.background{
+    background:lightblue;
+}
+.title{
+    font-weight: bold;
+    font-size: larger;
+}

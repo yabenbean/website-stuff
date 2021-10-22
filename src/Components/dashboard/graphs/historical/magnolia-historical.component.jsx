@@ -76,11 +76,11 @@ export default class MagnoliaHistorical extends Component{
             },
             axisX:{
                 title: "Time",
-                interval: 30,
+                interval: 50,
                 intervalType: "minute",
                 valueFormatString: "MMM DD hh:mm TT K",
                 labelAngel: -20,
-                labelFontSize: 16,
+                labelFontSize: 11,
             },
             axisY:{
                 title: "Measured Level of Air Pollutant",
