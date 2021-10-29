@@ -29,10 +29,15 @@
 }
 .size{
   padding-top: 3%;
- height: 85vh;
+ height: 70vh;
  width: 10vw;
+ size:10rem;
 }
 .border2{
   border-style:solid;
   border-width: 8px;
+}
+.size2{
+ height: 90vh;
+ width: 15vw;
 }
