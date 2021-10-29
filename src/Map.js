@@ -17,7 +17,7 @@ import { Accordion } from 'react-bootstrap';
 
   const styles =  {
   container: {
-    height: '70vh',
+    height: '100vh',
     width: '85vw'
   },
    mapEl: {
@@ -51,11 +51,9 @@ import { Accordion } from 'react-bootstrap';
                   zoom: 7,
                   
                 });
-                let legend = new Legend({
+                const legend = new Legend({
                  
                   view: view,
-                
-                  
                 });
                 
           
@@ -70,7 +68,8 @@ import { Accordion } from 'react-bootstrap';
                 view.when(() => {
                   new LayerList({
                     view: view,
-                    container: "layerlist"
+                    container: "layerlist",
+
                   });
                 });
           
@@ -84,7 +83,7 @@ import { Accordion } from 'react-bootstrap';
           
           <div class="container mt-5" style={styles.container}>
            
-            <div class="container m-2" style={ styles.mapEl } ref={MapEl}>
+            <div class="container m-2 mapEl" style={ styles.mapEl } ref={MapEl}>
               
             </div>
           </div>

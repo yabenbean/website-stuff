@@ -1,19 +1,16 @@
 .center {
     display: flex;
     justify-content: center;
-    background: blue;
     }
 
 .center1{
     display: flex;
     justify-content: center;
+    padding: 5%;
 
 }
-.border{
-    border-bottom: 5vh solid black;
-}
 .background{
-    background:lightblue;
+    background-color: whitesmoke;
 }
 .title{
     font-weight: bold;

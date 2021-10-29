@@ -18,12 +18,12 @@ function Insight() {
              <Table>
                     <img src="airpollute.jpg" alt="airpollution" height="400" className="col-12" />
                 </Table>
-        <div className='wrapper' >
+        <div className='wrapper color' >
              
             <div className='accordion' col='12'>
                 {info.map((item, i) =>
-                (<div className='item'>
-                    <div className='title' onClick={() => toggle(i)}>
+                (<div className='item color'>
+                    <div className='title ' onClick={() => toggle(i)}>
                         <h2>{item.question}</h2>
                         <span>{selected === i ? '˅' : '^'}</span>
                     </div>
@@ -51,32 +51,32 @@ const info = [
         answer: 'Primary Pollutants: The pollutants that directly cause air pollution are known as primary pollutants. For example, Sulphur-dioxide emitted from factories is a primary pollutant. Secondary Pollutants: The pollutants formed by the intermingling and reaction of primary pollutants are known as secondary pollutants. For example, Smog formed by the intermingling of smoke and fog is a secondary pollutant.',
     },
     {
-        question: 'There are Six Different Causes for Air Pollutions-Cause #1',
+        question: 'Air Pollutions-Cause #1',
         answer: 'Burning of Fossil Fuels The combustion of fossil fuels emits a large amount of sulphur dioxide. Carbon monoxide released by incomplete combustion of fossil fuels also results in air pollution.'
 
     },
     {
-        question: 'Cause #2',
+        question: 'Air Pollutions-Cause #2',
         answer: 'Automobiles-The gases emitted from vehicles such as jeeps, trucks, cars, buses, etc. pollute the environment. These are the major sources of greenhouse gases and also result in diseases among individuals.'
 
     },
     {
-        question: 'Cause #3',
+        question: 'Air Pollutions-Cause #3',
         answer: 'Agricultural Activities-hazardous gases emitted during agricultural activities. The insecticides, pesticides and fertilizers emit harmful chemicals in the atmosphere and contaminate it.'
 
     },
     {
-        question: 'Cause #4',
+        question: 'Air Pollutions-Cause #4',
         answer: 'Factories and Industries-Factories and industries are the main source of carbon monoxide, organic compounds, hydrocarbons and chemicals. These are released into the air, degrading its quality.'
 
     },
     {
-        question: 'Cause #5',
+        question: 'Air Pollutions-Cause #5',
         answer: 'Mining Activities-In the mining process, the minerals below the earth are extracted using large pieces of equipment. The dust and chemicals released during the process not only pollute the air, but also deteriorate the health of the workers and people living in the nearby areas.'
 
     },
     {
-        question: 'Cause #6',
+        question: 'Air Pollutions-Cause #6',
         answer: 'Domestic Sources-The household cleaning products and paints contain toxic chemicals that are released in the air. The smell from the newly painted walls is the smell of the chemicals present in the paints. It not only pollutes the air but also affects breathing.'
 
     },

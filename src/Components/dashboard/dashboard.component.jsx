@@ -34,8 +34,8 @@ export default class Dashboard extends Component {
     render() {
 
         return (
-            <div class="container mt-3 background ">
-                <div class="center " class="title" className="col-12">
+            <div class="container mt-3 background  ">
+                <div class="center" class="title" className="col-12">
                     <Tabs defaultActiveKey={
                             this.state.key
                         }
@@ -59,7 +59,7 @@ export default class Dashboard extends Component {
 
 
 
-                <div class="center"className="col-12">
+                <div class="center "className="col-12">
                     <Tabs defaultActiveKey={
                             this.state.key
                         }
@@ -83,7 +83,7 @@ export default class Dashboard extends Component {
                 <br/>
 
 
-                <div class="center" className="col-12">
+                <div class="center " className="col-12">
                 <AirQualityLineChart/>
                 </div>
                 <br/>

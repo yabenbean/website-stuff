@@ -14,7 +14,7 @@ import GEOTIFF_DATA from "./geotiff.data.js";
 
 const styles =  {
   container: {
-    height: '120vh',
+    height: '90vh',
     width: '60vw'
   },
    mapDiv: {
@@ -54,12 +54,12 @@ function ForecastMap({ id }) {
       const view = new MapView({
         map,
         container: mapDiv.current,
-        center: [-118.1, 33.75],
+        center: [-118.13, 33.75],
         zoom: 10,
       });
 
       const legend = new Legend({
-        view: view
+        view: view,
       })
 
       state.data.map((data) => {
@@ -78,16 +78,15 @@ function ForecastMap({ id }) {
       });
 
       view.ui.move("zoom", "top-right");
-      view.ui.add(legend, "bottom-left");
+      // view.ui.add(legend, "bottom-left");
       map.addMany(layers);
     }
   }, [state]);
         
         return(
-            <div class="container mt-3 col-12" style={styles.container}>
+            <div class=" col-12" style={styles.container}>
           
-            <div class="container col-10" style={ styles.mapDiv} ref={mapDiv} >
-           
+            <div class=" col-10 forecastMap" style={ styles.mapDiv} ref={mapDiv} >
         
             </div>
           

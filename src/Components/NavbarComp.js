@@ -6,7 +6,7 @@ class NavbarComp extends React.Component {
     return (
       <div>
         <Navbar bg="dark" variant="dark" expand="lg">
-          <img src="/air.png" alt="air" width="60" height="60" />
+          <img src="/air.png" alt="air" width="60" height="60" className= "m-2" />
           <Container>
             <Navbar.Brand>AirPollution</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />

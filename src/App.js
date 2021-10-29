@@ -7,11 +7,12 @@ import Insight from "./Components/Insight";
 import Home from "./Components/pages/Home";
 import Dashboard from "./Components/dashboard/dashboard.component"
 import Forecast from "./forecast"
+import './App.css'
 
 function App() {
   loadCss(); 
   return (
-    <div>
+    <div className="Color">
       <NavbarComp />
       <Router>
         <Switch>

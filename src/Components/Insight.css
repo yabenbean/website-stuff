@@ -11,8 +11,7 @@
 } */
 
 .item{
-    background:whitesmoke;
-    margin-bottom: 5px;
+    background:darkcyan;
     padding:10px 20px
 }
 .title{
@@ -34,7 +33,7 @@
     height: auto;
     max-height: 9999px;
     transition: all 0 9999px;
-
-
-
+}
+.color{
+    color:whitesmoke;
 }

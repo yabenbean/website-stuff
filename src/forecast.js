@@ -1,7 +1,8 @@
 import * as React from "react";
 
-import video from './Sample.mp4'
+import video from './OctoberSample.mp4'
 import ForecastMap from './ForecastMap.js'
+import './map.style.css'
 
 class Forecast extends React.Component {
 
@@ -27,37 +28,40 @@ class Forecast extends React.Component {
 
   render() {
     return (
-      <div className="map-row row h-100 w-100 m-3" >
-        <h1>Forecast Map</h1>
-        <div className="col-12 col-md-2">
+      
+      <div className="map-row row col-sm-12" >
+        
+        <div className="colortext mt-1 center1"><h1>OCTOBER 14, 2021</h1>
+        
+        
+        
+        </div>
+
+            <video src={video} loop autoPlay muted width="600" height="600"className="col-sm-12"></video>
+          <div className="center1 col-sm-12">
+          <img src="/Legend2.JPG" alt="airdescription" className="size" />
+          <ForecastMap id={1} />
+          
+          <div className="col-12 col-md-2">
             <div
-              className=" m-3 layerlist-content"
+              className="layerlist-content center1"
               id="layerlist1"
               ref={this.listRef}
+              
             ></div>
+          </div> 
+          
+
             
-          </div> 
+
+
+
           
-          <div className="col-12 col-md-10">
-            <ForecastMap id={1} />
-          </div>
-         
-
-          <div className="col-2 mt-1 center1">
-           
-            <img src="legend2.JPG" alt="legend" className="col-12"/>
-          
-          </div>
-          <div className="col-12 col-md-8 center1">
-          <video src={video} loop autoPlay muted width="800" height="800"></video>
-        
+    
           </div> 
-          <div className=" center1">
-          <h1>Decemeber 26, 2020</h1>
-          </div>
+       
+          
 
-
-          {/* <video src={video} loop autoPlay muted width="700" height="700"></video> */}
        
       </div>
     );
