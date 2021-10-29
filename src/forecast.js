@@ -39,7 +39,7 @@ class Forecast extends React.Component {
 
             <video src={video} loop autoPlay muted width="600" height="600"className="col-sm-12"></video>
           <div className="center1 col-sm-12">
-          <img src="/Legend2.JPG" alt="airdescription" className="size" />
+          <img src="/legend2.JPG" alt="airdescription" className="size" />
           <ForecastMap id={1} />
           
           <div className="col-12 col-md-2">
