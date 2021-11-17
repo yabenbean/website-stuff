@@ -9,10 +9,9 @@
 }
 .forecastMap{
   height: 120vh;
-  width: 60vw;
+  width: 30vw;
   border-style:solid;
   border-width: 8px;
-  padding-bottom: 100%
 }
 
 .center1{
@@ -22,6 +21,11 @@
 }
 .colortext{
   color: white;
+}
+.centered{
+  display:flex;
+  justify-content: center;
+  /* padding-top: 5%; */
 }
 
 .background2{
@@ -38,6 +42,6 @@
   border-width: 8px;
 }
 .size2{
- height: 90vh;
- width: 15vw;
+ height: 100vh;
+ width: 20vw;
 }

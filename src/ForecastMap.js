@@ -14,8 +14,8 @@ import GEOTIFF_DATA from "./geotiff.data.js";
 
 const styles =  {
   container: {
-    height: '90vh',
-    width: '60vw'
+    height: '100vh',
+    width: '87vw'
   },
    mapDiv: {
     height: '100%',
@@ -54,8 +54,8 @@ function ForecastMap({ id }) {
       const view = new MapView({
         map,
         container: mapDiv.current,
-        center: [-118.13, 33.75],
-        zoom: 10,
+        center: [-118.1, 33.90],
+        zoom: 11,
       });
 
       const legend = new Legend({

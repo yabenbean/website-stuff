@@ -1,7 +1,14 @@
 .center {
     display: flex;
-    justify-content: center;
+    justify-content:center;
+    width: 80vw;
     }
+ .center2 {
+        display: flex;
+        justify-content:center;
+        width:30vw;
+        padding-right: 5%;
+        }
 
 .center1{
     display: flex;
@@ -9,10 +16,32 @@
     padding: 5%;
 
 }
+.center5{
+    display: flex;
+    justify-content: center;
+}
+.center3{
+    display: flex;
+    justify-content: center;
+    padding-left: 5%;
+    padding-right: 10%;
+}
 .background{
     background-color: whitesmoke;
 }
 .title{
     font-weight: bold;
     font-size: larger;
+}
+.textSize{
+    font-size: 3vh;
+    color: black;
+    column-span: all;
+    column-gap: 10vw;
+}
+.backgroundNav{
+    background-color:#191970;
+}
+.backgroundNav2{
+    background-color:#0b0b45;
 }

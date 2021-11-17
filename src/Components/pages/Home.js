@@ -5,8 +5,8 @@ import Map from "../../Map";
 class Home extends React.Component {
   render() {
     return (
-      <div class="m-3 ">
-        <div className="colortext">
+      <div>
+        <div className="colortext m-5">
         <h1>Air Pollution and Air Quality</h1>
         </div>
         <Map />

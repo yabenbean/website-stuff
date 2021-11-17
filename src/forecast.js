@@ -14,17 +14,17 @@ class Forecast extends React.Component {
     };
   }
 
-  handleSubmit = (event) => {
-    event.preventDefault();
-    this.listRef.current.innerHTML = "";
-  };
+  // handleSubmit = (event) => {
+  //   event.preventDefault();
+  //   this.listRef.current.innerHTML = "";
+  // };
 
-  handleClick = (event) => {
-    const { value, name } = event.target;
-    this.setState({
-      [name]: value.type === "number" ? value : parseInt(value),
-    });
-  };
+  // handleClick = (event) => {
+  //   const { value, name } = event.target;
+  //   this.setState({
+  //     [name]: value.type === "number" ? value : parseInt(value),
+  //   });
+  // };
 
   render() {
     return (
@@ -39,7 +39,7 @@ class Forecast extends React.Component {
           
             <video src={video} loop autoPlay muted width="600" height="600"className="col-sm-12"></video>
           <div className="center1 col-sm-12">
-          <img src="/legend2.JPG" alt="Legend2" className="size" />
+          <img src="/Legend2.JPG" alt="Legend2" className="size" />
           <ForecastMap id={1} />
           
           

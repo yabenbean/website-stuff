@@ -18,7 +18,7 @@ import { Accordion } from 'react-bootstrap';
   const styles =  {
   container: {
     height: '100vh',
-    width: '85vw'
+    width:'100vw'
   },
    mapEl: {
     height: '100%',
@@ -48,7 +48,7 @@ import { Accordion } from 'react-bootstrap';
                   map,
                   container: MapEl.current,
                   center: [-118.2437, 34.0522],
-                  zoom: 7,
+                  zoom: 9,
                   
                 });
                 const legend = new Legend({
@@ -81,9 +81,9 @@ import { Accordion } from 'react-bootstrap';
         
         return(
           
-          <div class="container mt-5" style={styles.container}>
+          <div style={styles.container}>
            
-            <div class="container m-2 mapEl" style={ styles.mapEl } ref={MapEl}>
+            <div class="forecastMap" style={ styles.mapEl } ref={MapEl}>
               
             </div>
           </div>

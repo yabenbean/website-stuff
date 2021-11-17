@@ -6,8 +6,10 @@ import NavbarComp from "./Components/NavbarComp";
 import Insight from "./Components/Insight";
 import Home from "./Components/pages/Home";
 import Dashboard from "./Components/dashboard/dashboard.component"
-import Forecast from "./forecast"
+import MapForecast from "./MapForecast"
 import './App.css'
+import AirQualityMap from './airqualitymap';
+import ForecastVideo from './forecastVideo';
 
 function App() {
   loadCss(); 
@@ -17,9 +19,12 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/" component={Home} />
-          <Route exact path="/forecast" component={Forecast} /> 
+          <Route exact path="/MapForecast" component={MapForecast} /> 
           <Route exact path="/graphs" component={Dashboard} /> 
-          <Route exact path="/insight" component={Insight} />
+          <Route exact path="/airqualitymap" component={AirQualityMap} /> 
+          <Route exact path="/forecastVideo" component={ForecastVideo} /> 
+
+          {/* <Route exact path="/insight" component={Insight} /> */}
         </Switch>
       </Router>
     </div>
