@@ -1,0 +1,51 @@
+#aq-weather-icon{
+    width: 70px;
+    height: auto;
+}
+.air-quality {
+    margin-top: 80px;
+    margin-bottom: 80px;
+}
+
+#aq-title {
+    font-family: Overpass;
+    font-size: 3rem;
+    text-transform: uppercase;
+}
+
+.table-header{
+    text-align: center;
+    font-weight: bold;
+}
+
+.colorfont3{
+    color: white
+}
+
+.good{
+    background-color: lightgreen;
+}
+
+.moderate{
+    background-color: yellow;
+}
+
+.usg{
+    background-color: orange;
+}
+
+.unhealthy{
+    background-color: red;
+}
+
+.vunhealthy{
+    background-color: purple;
+}
+
+.hazard{
+    background-color: maroon;
+}
+
+.weather-search-results{
+    font-size: small;
+}

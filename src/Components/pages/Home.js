@@ -9,6 +9,7 @@ class Home extends React.Component {
         <div className="colortext m-5">
         <h1>Air Pollution and Air Quality</h1>
         </div>
+        
         <Map />
         <br/>
         <br/>
