@@ -8,7 +8,7 @@ import ArcGISMap from "@arcgis/core/Map";
 import MapView from "@arcgis/core/views/MapView";
 import LayerList from "@arcgis/core/widgets/LayerList";
 import Legend from '@arcgis/core/widgets/Legend';
-
+import Search from "@arcgis/core/widgets/Search"
 import GEOTIFF_DATA from "./geotiff.data.js";
 
 

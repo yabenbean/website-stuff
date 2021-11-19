@@ -1,8 +1,10 @@
 import * as React from "react";
-import { Container, Navbar, Nav, Form, FormControl, Button, NavDropdown } from "react-bootstrap";
+import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap";
 import { setAirQuality } from "../redux/actions/spinner.actions";
-import Search from "../search.js";
-import ".././airquality.style.css";
+// import ".././airquality.style.css";
+
+
+
 
 class NavbarComp extends React.Component {
   didAirQualityLoad = false;
@@ -95,6 +97,10 @@ class NavbarComp extends React.Component {
           aqiCode: data.data[0].aqi,
         });
       });
+
+    setTimeout(() => {
+      setAirQuality(this.didAirQualityLoad);
+    }, 3000);
   }
 
   retrieveDataFromCity(cityName){
@@ -161,7 +167,12 @@ class NavbarComp extends React.Component {
           aqiCode: data.data[0].aqi,
         });
       });
+
+    setTimeout(() => {
+      setAirQuality(this.didAirQualityLoad);
+    }, 3000);
   }
+
   componentDidMount() {
     this.retrieveDataFromPostal();
   }
@@ -191,6 +202,7 @@ class NavbarComp extends React.Component {
       [name]: value,
     });
   };
+
   render() {
     return (
       <div>
@@ -212,94 +224,20 @@ class NavbarComp extends React.Component {
             </form>
 
             <div className="colorfont3 mt-3 p-5">
-              <h2>Current Air Quality</h2>
+              
               <div className="aq-d-location">
-                <strong>
+                <h4>
                   Location: {this.state.cityName}, {this.state.stateCode}
-                </strong>
+                </h4>
               </div>
-              <div className="aq-d-aqi">
-                Air Quality Index: {this.state.aqiCode}
+              <div className="aq-d-aqi textsize2 ">
+                Todays Air Quality Index: {this.state.aqiCode}                 
+
+
               </div>
               <div className="weather-search-results">
                 <div className="row" id="row">
                   <div className="col-md holder">
-                    <div>
-                      <h2> {this.state.date[0]}</h2>
-                    </div>
-
-
-                    {/* <img
-                      id="aq-weather-icon"
-                      src={
-                        "/weather-icons/" + this.state.weatherIcon[0] + ".png"
-                      }
-                      alt="weather-icon"
-                    />
-
-                    <div>Temp: {this.state.weatherTemp[0]}&#8457;</div>
-                    <div>Min Temp: {this.state.weatherMinTemp[0]}&#8457;</div>
-                    <div>Max Temp: {this.state.weatherMaxTemp[0]}&#8457;</div>
-                  </div>
-                  <div className="col-md holder">
-                    <div>
-                      <b> {this.state.date[1]}</b>
-                    </div>
-                    <img
-                      id="aq-weather-icon"
-                      src={
-                        "/weather-icons/" + this.state.weatherIcon[1] + ".png"
-                      }
-                      alt="weather-icon"
-                    />
-                    <div>Temp:{this.state.weatherTemp[1]}&#8457;</div>
-                    <div>Min Temp: {this.state.weatherMinTemp[1]}&#8457;</div>
-                    <div>Max Temp: {this.state.weatherMaxTemp[1]}&#8457;</div>
-                  </div>
-                  <div className="col-md holder">
-                    <div>
-                      <b> {this.state.date[2]}</b>
-                    </div>
-                    <img
-                      id="aq-weather-icon"
-                      src={
-                        "/weather-icons/" + this.state.weatherIcon[2] + ".png"
-                      }
-                      alt="weather-icon"
-                    />
-                    <div>Temp:{this.state.weatherTemp[2]}&#8457;</div>
-                    <div>Min Temp: {this.state.weatherMinTemp[2]}&#8457;</div>
-                    <div>Max Temp: {this.state.weatherMaxTemp[2]}&#8457;</div>
-                  </div>
-                  <div className="col-md holder">
-                    <div>
-                      <b> {this.state.date[3]}</b>
-                    </div>
-                    <img
-                      id="aq-weather-icon"
-                      src={
-                        "/weather-icons/" + this.state.weatherIcon[3] + ".png"
-                      }
-                      alt="weather-icon"
-                    />
-                    <div>Temp:{this.state.weatherTemp[3]}&#8457;</div>
-                    <div>Min Temp: {this.state.weatherMinTemp[3]}&#8457;</div>
-                    <div>Max Temp: {this.state.weatherMaxTemp[3]}&#8457;</div>
-                  </div>
-                  <div className="col-md holder">
-                    <div>
-                      <b> {this.state.date[4]}</b>
-                    </div>
-                    <img
-                      id="aq-weather-icon"
-                      src={
-                        "/weather-icons/" + this.state.weatherIcon[4] + ".png"
-                      }
-                      alt="weather-icon"
-                    />
-                    <div>Temp:{this.state.weatherTemp[4]}&#8457;</div> */}
-                    {/* <div>Min Temp: {this.state.weatherMinTemp[4]}&#8457;</div>
-                    <div>Max Temp: {this.state.weatherMaxTemp[4]}&#8457;</div> */}
                   </div>
                 </div>
               </div>
@@ -314,11 +252,11 @@ class NavbarComp extends React.Component {
               <Nav className="center textSize">
                 <Nav.Link href="/">Home</Nav.Link>
                 <Nav.Link href="/graphs">Graphs</Nav.Link>
-        <Nav.Link href="#">Hourly</Nav.Link>
+        <Nav.Link href="/hourly">Hourly</Nav.Link>
         <NavDropdown title="Maps" id="basic-nav-dropdown">
-          <NavDropdown.Item href="/airqualitymap">AIRQUALITY Map</NavDropdown.Item>
-          <NavDropdown.Item href="/MapForecast">FORECAST MAP</NavDropdown.Item>
-          <NavDropdown.Item href="/forecastVideo">FORECAST VIDEO</NavDropdown.Item>
+        <NavDropdown.Item href="/airqualitymap">AIRQUALITY Map</NavDropdown.Item>
+        <NavDropdown.Item href="/MapForecast">FORECAST MAP</NavDropdown.Item>
+        <NavDropdown.Item href="/forecastVideo">FORECAST VIDEO</NavDropdown.Item>
         </NavDropdown>
                 {/* <Nav.Link href="/insight">Insight</Nav.Link> */}
               </Nav>

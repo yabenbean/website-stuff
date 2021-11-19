@@ -8,6 +8,7 @@ import ArcGISMap from "@arcgis/core/Map";
 import MapView from "@arcgis/core/views/MapView";
 import LayerList from "@arcgis/core/widgets/LayerList";
 import Legend from '@arcgis/core/widgets/Legend';
+import Search from "@arcgis/core/widgets/Search"
 
 import POLLUTION_DATA from "./pollution.data.js";
 
@@ -52,9 +53,18 @@ import { Accordion } from 'react-bootstrap';
                   
                 });
                 const legend = new Legend({
-                 
+
                   view: view,
                 });
+                const searchWidget = new Search({
+                  view: view
+                });
+                  view.ui.add(searchWidget, {
+                    position: "top-right",
+                    index: 2
+
+                }); 
+
                 
           
                 state.data.map((data) => {
