@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap";
 import { setAirQuality } from "../redux/actions/spinner.actions";
-// import ".././airquality.style.css";
+import ".././airquality.style.css";
 
 
 

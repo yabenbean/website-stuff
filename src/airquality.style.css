@@ -21,6 +21,10 @@
 .colorfont3{
     color: white
 }
+.textsize2{
+    font-size: 20px;
+}
+
 
 .good{
     background-color: lightgreen;
@@ -45,7 +49,6 @@
 .hazard{
     background-color: maroon;
 }
-
 .weather-search-results{
     font-size: small;
 }
