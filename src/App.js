@@ -10,6 +10,7 @@ import MapForecast from "./MapForecast"
 import './App.css'
 import AirQualityMap from './airqualitymap';
 import ForecastVideo from './forecastVideo';
+import Hourly from './forecastpage';
 
 function App() {
   loadCss(); 
@@ -23,6 +24,7 @@ function App() {
           <Route exact path="/graphs" component={Dashboard} /> 
           <Route exact path="/airqualitymap" component={AirQualityMap} /> 
           <Route exact path="/forecastVideo" component={ForecastVideo} /> 
+          <Route exact path="/hourly" component={Hourly} /> 
 
           {/* <Route exact path="/insight" component={Insight} /> */}
         </Switch>

@@ -1,13 +1,11 @@
-import * as React from "react";
-import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap";
-import { setAirQuality } from "../redux/actions/spinner.actions.js";
-import ".././airquality.style.css";
+import React from "react";
+// import { connect } from "react-redux";
+import { setAirQuality } from "./redux/actions/spinner.actions";
 import axios, { Axios } from 'axios';
+import "./airquality.style.css";
 
-
-
-
-class NavbarComp extends React.Component {
+class Hourly extends React.Component {
+  
   didAirQualityLoad = false;
   constructor(props) {
     super(props);
@@ -17,9 +15,10 @@ class NavbarComp extends React.Component {
       "https://api.weatherbit.io/v2.0/forecast/daily?city="
     //this.AqiUrl = "https://api.weatherbit.io/v2.0/current/airquality?postal_code=";
     this.PostcodeAqiUrl = "https://api.weatherbit.io/v2.0/current?postal_code=";
-    this.CityAqiUrl = "https://api.weatherbit.io/v2.0/current/?city=2d718d2733a74d1689d72b922c0ac4f4"
+    this.CityAqiUrl = "https://api.weatherbit.io/v2.0/current/?city="
+    // this.widget = "https://widget.airnow.gov/aq-flag-widget/?a=today&z=90012&n=losAngeles"
     // this.key = process.env.REACT_APP_WEATHERBIT_KEY;
-    this.key = "db5d97de2f5e423bb3dd7e130101a7dd	";
+    this.key = "db5d97de2f5e423bb3dd7e130101a7dd";
     this.state = {
       postalCode: "90012",
       check: null,
@@ -98,6 +97,8 @@ class NavbarComp extends React.Component {
           aqiCode: data.data[0].aqi,
         });
       });
+
+   
   }
 
   retrieveDataFromCity(cityName){
@@ -164,6 +165,8 @@ class NavbarComp extends React.Component {
           aqiCode: data.data[0].aqi,
         });
       });
+
+   
   }
 
   componentDidMount() {
@@ -196,12 +199,10 @@ class NavbarComp extends React.Component {
     });
   };
 
-
-
   componentDidMount1() {
     axios({
       method: 'GET',
-      url:"https://widget.airnow.gov/aq-dial-widget-primary-pollutant/?city="+this.state.cityName+"&state="+this.state.stateCode+"&country=USA&transparent=true" 
+      url:"https://widget.airnow.gov/aq-dial-widget-primary-pollutant/?city="+this.state.cityName+"&state=NC&country=USA&transparent=true"
 
     }).then((resp) => {
       this.setState({
@@ -211,67 +212,136 @@ class NavbarComp extends React.Component {
   }
 
   render() {
-    return (
-      <div>
-         <Navbar variant="dark" expand="lg" className="center3 backgroundNav">
-            <img src="/air.png" alt="air" width="100" height="100"/>
-            <Navbar.Brand className="center3 textSize">AirPollution</Navbar.Brand>
-  <Container>
-  <form onSubmit={this.handleSubmit}>
-              <label className="form-label colorfont3">Find Your City!</label>
-              <input
-                className="center2"
-                type="text"
-                placeholder="Enter zipcode or city name here..."
-                value={this.state.postalCode}
-                onChange={this.handleChange}
-                name="postalCode"
-                id="aq-lookup"
-              />
-            </form>
 
-            <div className="colorfont3 mt-3 p-5">
-              
-              <div className="aq-d-location">
-                <h4>
+    const urlchange = "https://widget.airnow.gov/aq-dial-widget-primary-pollutant/?city="+this.state.cityName+"&state=NC&country=USA&transparent=true"
+    return (
+      <div className="air-quality container w-100">
+        <div className="row pt-4 pb-4">
+          <div className="col-lg-4 pb-4 d-flex justify-content-center align-items-center">
+            <h1 id="aq-title">
+              {this.state.cityName}
+              <br />
+              AIR QUALITY
+            </h1>
+          </div>
+          <div className="col-lg-8 pb-4">
+          <h1>
                   Location: {this.state.cityName}, {this.state.stateCode}
-                </h4>
+                </h1>
+            <div className="aq-details mt-3">
+              <h2>Current Air Quality</h2>
+              <div className="aq-d-location">
+               
               </div>
-              <div className="aq-d-aqi textsize2 ">
-                Todays Air Quality Index: {this.state.aqiCode}               
+                <div className="aq-d-aqi">
+          
               </div>
+
+
+
+
+
+
+
+
+
+
+
               <div className="weather-search-results">
                 <div className="row" id="row">
                   <div className="col-md holder">
+                    <div>
+                      <b> {this.state.date[0]}</b>
+                    </div>
+                    <img
+                      id="aq-weather-icon"
+                      src={
+                        "/weather-icons/" + this.state.weatherIcon[0] + ".png"
+                      }
+                      alt="weather-icon"
+                    />
+
+                    <div>Temp: {this.state.weatherTemp[0]}&#8457;</div>
+                    <div>Min Temp: {this.state.weatherMinTemp[0]}&#8457;</div>
+                    <div>Max Temp: {this.state.weatherMaxTemp[0]}&#8457;</div>
+                  </div>
+                  <div className="col-md holder">
+                    <div>
+                      <b> {this.state.date[1]}</b>
+                    </div>
+                    <img
+                      id="aq-weather-icon"
+                      src={
+                        "/weather-icons/" + this.state.weatherIcon[1] + ".png"
+                      }
+                      alt="weather-icon"
+                    />
+                    <div>Temp:{this.state.weatherTemp[1]}&#8457;</div>
+                    <div>Min Temp: {this.state.weatherMinTemp[1]}&#8457;</div>
+                    <div>Max Temp: {this.state.weatherMaxTemp[1]}&#8457;</div>
+                  </div>
+                  <div className="col-md holder">
+                    <div>
+                      <b> {this.state.date[2]}</b>
+                    </div>
+                    <img
+                      id="aq-weather-icon"
+                      src={
+                        "/weather-icons/" + this.state.weatherIcon[2] + ".png"
+                      }
+                      alt="weather-icon"
+                    />
+                    <div>Temp:{this.state.weatherTemp[2]}&#8457;</div>
+                    <div>Min Temp: {this.state.weatherMinTemp[2]}&#8457;</div>
+                    <div>Max Temp: {this.state.weatherMaxTemp[2]}&#8457;</div>
+                  </div>
+                  <div className="col-md holder">
+                    <div>
+                      <b> {this.state.date[3]}</b>
+                    </div>
+                    <img
+                      id="aq-weather-icon"
+                      src={
+                        "/weather-icons/" + this.state.weatherIcon[3] + ".png"
+                      }
+                      alt="weather-icon"
+                    />
+                    <div>Temp:{this.state.weatherTemp[3]}&#8457;</div>
+                    <div>Min Temp: {this.state.weatherMinTemp[3]}&#8457;</div>
+                    <div>Max Temp: {this.state.weatherMaxTemp[3]}&#8457;</div>
+                  </div>
+                  <div className="col-md holder">
+                    <div>
+                      <b> {this.state.date[4]}</b>
+                    </div>
+                    <img
+                      id="aq-weather-icon"
+                      src={
+                        "/weather-icons/" + this.state.weatherIcon[4] + ".png"
+                      }
+                      alt="weather-icon"
+                    />
+                    <div>Temp:{this.state.weatherTemp[4]}&#8457;</div>
+                    <div>Min Temp: {this.state.weatherMinTemp[4]}&#8457;</div>
+                    <div>Max Temp: {this.state.weatherMaxTemp[4]}&#8457;</div>
                   </div>
                 </div>
               </div>
+                <div>
+                  <iframe title="Example 6" height="380" src= {urlchange}  width="600" ></iframe>
+                </div>
             </div>
-            
-  </Container>
-  </Navbar>
-        <Navbar variant="dark" expand="lg" className="backgroundNav2">
-          <Container>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
-              <Nav className="center textSize">
-                <Nav.Link href="/">Home</Nav.Link>
-                <Nav.Link href="/graphs">Graphs</Nav.Link>
-        <Nav.Link href="/hourly">Hourly</Nav.Link>
-        <NavDropdown title="Maps" id="basic-nav-dropdown">
-        <NavDropdown.Item href="/airqualitymap">AIRQUALITY Map</NavDropdown.Item>
-        <NavDropdown.Item href="/MapForecast">FORECAST MAP</NavDropdown.Item>
-        <NavDropdown.Item href="/forecastVideo">FORECAST VIDEO</NavDropdown.Item>
-        </NavDropdown>
-                {/* <Nav.Link href="/insight">Insight</Nav.Link> */}
-              </Nav>
-            </Navbar.Collapse>
-          </Container>
-          
-        </Navbar>
+          </div>
+        </div>
+
+        
       </div>
     );
   }
 }
 
-export default NavbarComp;
+const mapDispatchToProps = (dispatch) => ({
+  setAirQuality: (didLoad) => dispatch(setAirQuality(didLoad)),
+});
+
+export default Hourly;
