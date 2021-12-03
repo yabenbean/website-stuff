@@ -11,8 +11,8 @@ import GEOTIFF_DATA from "./geotiff.data.js";
 
 const styles =  {
   container: {
-    height: '70vh',
-    width: '85vw'
+    height: '100vh',
+    width: '100vw'
   },
    mapDiv: {
     height: '100%',
@@ -95,25 +95,27 @@ view.ui.add(timeSlider, "bottom-left");
         }
       });
 
-      view.when(() => {
-        new LayerList({
-          view: view,
-          container: "layerlist" + id.toString(),
-        });
-      });
+      // view.when(() => {
+      //   new LayerList({
+      //     view: view,
+      //     container: "layerlist" + id.toString(),
+      //   });
+      // });
 
       view.ui.move("zoom", "top-right");
       // view.ui.add(legend, "bottom-right");
-      map.addMany(layers);
+      // map.addMany(layers);
     }
   }, [state]);
 
-  return <div class="container mt-5" style={styles.container}>
+  return(
+  <div style={styles.container}>
            
-  <div class="container m-2" style={ styles.mapDiv } ref={mapDiv}>
+  <div style={ styles.mapDiv } ref={mapDiv}>
     
   </div>
 </div>
+  )
 }
 
 export default ForecastMap;

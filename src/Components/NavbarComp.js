@@ -215,7 +215,7 @@ class NavbarComp extends React.Component {
       <div>
          <Navbar variant="dark" expand="lg" className="center3 backgroundNav">
             <img src="/air.png" alt="air" width="100" height="100"/>
-            <Navbar.Brand className="center3 textSize"><a>Predict What We Breathe</a></Navbar.Brand>
+            <Navbar.Brand className="center3 textSize"><h3><a>Predict What We Breathe</a></h3></Navbar.Brand>
   <Container>
   <form onSubmit={this.handleSubmit}>
               <label className="form-label colorfont3 center5">Find Your City!</label>
