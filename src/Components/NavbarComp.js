@@ -3,7 +3,7 @@ import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap";
 import { setAirQuality } from "../redux/actions/spinner.actions.js";
 import ".././airquality.style.css";
 import axios, { Axios } from 'axios';
-
+import Hourly from "../forecastpage.js";
 
 
 
@@ -17,9 +17,9 @@ class NavbarComp extends React.Component {
       "https://api.weatherbit.io/v2.0/forecast/daily?city="
     //this.AqiUrl = "https://api.weatherbit.io/v2.0/current/airquality?postal_code=";
     this.PostcodeAqiUrl = "https://api.weatherbit.io/v2.0/current?postal_code=";
-    this.CityAqiUrl = "https://api.weatherbit.io/v2.0/current/?city=2d718d2733a74d1689d72b922c0ac4f4"
+    this.CityAqiUrl = "https://api.weatherbit.io/v2.0/current/?city="
     // this.key = process.env.REACT_APP_WEATHERBIT_KEY;
-    this.key = "db5d97de2f5e423bb3dd7e130101a7dd	";
+    this.key = "f872fbc28c5b46b089be2dfb0096166f";
     this.state = {
       postalCode: "90012",
       check: null,
@@ -215,14 +215,14 @@ class NavbarComp extends React.Component {
       <div>
          <Navbar variant="dark" expand="lg" className="center3 backgroundNav">
             <img src="/air.png" alt="air" width="100" height="100"/>
-            <Navbar.Brand className="center3 textSize">AirPollution</Navbar.Brand>
+            <Navbar.Brand className="center3 textSize"><a>Predict What We Breathe</a></Navbar.Brand>
   <Container>
   <form onSubmit={this.handleSubmit}>
-              <label className="form-label colorfont3">Find Your City!</label>
+              <label className="form-label colorfont3 center5">Find Your City!</label>
               <input
-                className="center2"
+                className="center2 textboxSearch"
                 type="text"
-                placeholder="Enter zipcode or city name here..."
+                placeholder="                     Enter zipcode or city name here..."
                 value={this.state.postalCode}
                 onChange={this.handleChange}
                 name="postalCode"
@@ -230,23 +230,12 @@ class NavbarComp extends React.Component {
               />
             </form>
 
-            <div className="colorfont3 mt-3 p-5">
+            {/* <div className="colorfont3 mt-3 p-5">
               
-              <div className="aq-d-location">
-                <h4>
-                  Location: {this.state.cityName}, {this.state.stateCode}
-                </h4>
-              </div>
-              <div className="aq-d-aqi textsize2 ">
-                Todays Air Quality Index: {this.state.aqiCode}               
-              </div>
-              <div className="weather-search-results">
-                <div className="row" id="row">
-                  <div className="col-md holder">
-                  </div>
-                </div>
-              </div>
-            </div>
+             
+             
+              
+            </div> */}
             
   </Container>
   </Navbar>
@@ -257,7 +246,7 @@ class NavbarComp extends React.Component {
               <Nav className="center textSize">
                 <Nav.Link href="/">Home</Nav.Link>
                 <Nav.Link href="/graphs">Graphs</Nav.Link>
-        <Nav.Link href="/hourly">Hourly</Nav.Link>
+        {/* <Nav.Link href="/hourly">Hourly</Nav.Link> */}
         <NavDropdown title="Maps" id="basic-nav-dropdown">
         <NavDropdown.Item href="/airqualitymap">AIRQUALITY Map</NavDropdown.Item>
         <NavDropdown.Item href="/MapForecast">FORECAST MAP</NavDropdown.Item>

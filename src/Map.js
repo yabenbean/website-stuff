@@ -19,7 +19,7 @@ import { Accordion } from 'react-bootstrap';
   const styles =  {
   container: {
     height: '100vh',
-    width:'100vw'
+    width:'99vw'
   },
    mapEl: {
     height: '100%',
@@ -53,7 +53,7 @@ import { Accordion } from 'react-bootstrap';
                   
                 });
                 const legend = new Legend({
-
+                 
                   view: view,
                 });
                 const searchWidget = new Search({
@@ -62,10 +62,8 @@ import { Accordion } from 'react-bootstrap';
                   view.ui.add(searchWidget, {
                     position: "top-right",
                     index: 2
-
-                }); 
-
-                
+                  
+                });
           
                 state.data.map((data) => {
                   if (state.id === data.id) {
@@ -83,7 +81,7 @@ import { Accordion } from 'react-bootstrap';
                   });
                 });
           
-                view.ui.move("zoom", "top-right");
+                view.ui.move("zoom", "top-left");
                 view.ui.add(legend ,"bottom-left");
                  map.addMany(layers);
              }

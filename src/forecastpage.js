@@ -1,8 +1,10 @@
 import React from "react";
+import { Container } from "react-bootstrap";
 // import { connect } from "react-redux";
 import { setAirQuality } from "./redux/actions/spinner.actions";
 import axios, { Axios } from 'axios';
 import "./airquality.style.css";
+import NavbarComp from "./Components/NavbarComp";
 
 class Hourly extends React.Component {
   
@@ -18,9 +20,10 @@ class Hourly extends React.Component {
     this.CityAqiUrl = "https://api.weatherbit.io/v2.0/current/?city="
     // this.widget = "https://widget.airnow.gov/aq-flag-widget/?a=today&z=90012&n=losAngeles"
     // this.key = process.env.REACT_APP_WEATHERBIT_KEY;
-    this.key = "db5d97de2f5e423bb3dd7e130101a7dd";
+    this.key = "f872fbc28c5b46b089be2dfb0096166f";
+    // this.key = "db5d97de2f5e423bb3dd7e130101a7dd";
     this.state = {
-      postalCode: "90012",
+      postalCode: "90006",
       check: null,
       cityName: null,
       stateCode: null,
@@ -202,7 +205,7 @@ class Hourly extends React.Component {
   componentDidMount1() {
     axios({
       method: 'GET',
-      url:"https://widget.airnow.gov/aq-dial-widget-primary-pollutant/?city="+this.state.cityName+"&state=NC&country=USA&transparent=true"
+      url:"https://widget.airnow.gov/aq-dial-widget-primary-pollutant/?city="+this.state.cityName+"&state="+this.state.stateCode+"&country=USA&transparent=true"
 
     }).then((resp) => {
       this.setState({
@@ -212,30 +215,44 @@ class Hourly extends React.Component {
   }
 
   render() {
-
-    const urlchange = "https://widget.airnow.gov/aq-dial-widget-primary-pollutant/?city="+this.state.cityName+"&state=NC&country=USA&transparent=true"
+    
+    const urlchange = "https://widget.airnow.gov/aq-dial-widget-primary-pollutant/?city="+this.state.cityName+"&state="+this.state.stateCode+"&country=USA&transparent=true"
     return (
-      <div className="air-quality container w-100">
+      
+      <div className="row pt-4 pb-4 air-quality container w-100">
+       
         <div className="row pt-4 pb-4">
+       
           <div className="col-lg-4 pb-4 d-flex justify-content-center align-items-center">
-            <h1 id="aq-title">
-              {this.state.cityName}
-              <br />
-              AIR QUALITY
-            </h1>
+          
+          <div className="gage">
+                  <iframe title="Example 6" height="380" src= {urlchange}  width="600" ></iframe>
+                </div>
           </div>
+          <div className="weather-search-results ">
+          <Container>
+  <form onSubmit={this.handleSubmit}>
+              <label className="form-label">Find Your City!</label>
+              <input
+                className="center2 textboxSearch"
+                type="text"
+                placeholder="                     Enter zipcode or city name here..."
+                value={this.state.postalCode}
+                onChange={this.handleChange}
+                name="postalCode"
+                id="aq-lookup"
+              />
+            </form>
+            
+  </Container>
           <div className="col-lg-8 pb-4">
-          <h1>
-                  Location: {this.state.cityName}, {this.state.stateCode}
-                </h1>
+          <h2> Location: {this.state.cityName}, {this.state.stateCode}</h2>
             <div className="aq-details mt-3">
               <h2>Current Air Quality</h2>
               <div className="aq-d-location">
                
               </div>
-                <div className="aq-d-aqi">
-          
-              </div>
+             
 
 
 
@@ -247,7 +264,7 @@ class Hourly extends React.Component {
 
 
 
-              <div className="weather-search-results">
+             
                 <div className="row" id="row">
                   <div className="col-md holder">
                     <div>
@@ -327,12 +344,14 @@ class Hourly extends React.Component {
                   </div>
                 </div>
               </div>
-                <div>
-                  <iframe title="Example 6" height="380" src= {urlchange}  width="600" ></iframe>
-                </div>
+              
             </div>
           </div>
+         
+
+          
         </div>
+      
 
         
       </div>

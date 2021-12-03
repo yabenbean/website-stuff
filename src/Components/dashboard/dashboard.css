@@ -34,9 +34,8 @@
     font-size: larger;
 }
 .textSize{
-    font-size: 3vh;
+    font-size: 2vh;
     color: black;
-    column-span: all;
     column-gap: 10vw;
 }
 .backgroundNav{
@@ -44,4 +43,9 @@
 }
 .backgroundNav2{
     background-color:#0b0b45;
+}
+
+.textboxSearch{
+    border-radius: 25px;
+    opacity: 0.5;
 }
