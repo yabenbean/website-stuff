@@ -60,13 +60,25 @@
     background-color: white;
     font-size: small;
 }
+
+.forecastgage{
+    
+    padding-left: 100px;
+    margin-left: 100px;
+    border-radius: 25px;
+    padding-top: 30px;
+    width:300px;
+    height: 480px;
+    background-color: white;
+    font-size: small;
+}
 .gage{
    
     width: 300px;
     height: 450px;
-    display: block;
-   
-    padding-left: 40px;
+    /* display: block; */
+    margin-left: 30px;
+    padding-left: 30px;
     padding-top: 30px;
     border-radius: 25px;
     background-color: white;

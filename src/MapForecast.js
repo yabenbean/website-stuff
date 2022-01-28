@@ -1,5 +1,5 @@
 import * as React from "react";
-
+// import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap";
 import ForecastMap from './ForecastMap.js'
 import './map.style.css'
 
@@ -16,7 +16,9 @@ class MapForecast extends React.Component {
 
   render() {
     return (
+      <div>
       <div className="map-row col-sm-12" >
+        
         
 
         
@@ -24,17 +26,17 @@ class MapForecast extends React.Component {
         <ForecastMap id={1} />
         
         
-          <div
+          {/* <div
             className="content-layerlist size2 "
             id="layerlist1"
             ref={this.listRef}
             
-          ></div>
+          ></div> */}
         
         </div>
      
     </div>
-           
+    </div>
 
     );
   }

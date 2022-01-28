@@ -16,14 +16,14 @@ function App() {
   loadCss(); 
   return (
     <div className="Color">
-      <NavbarComp />
+      {/* <NavbarComp /> */}
       <Router>
         <Switch>
-          <Route exact path="/" component={Hourly} />
+          <Route exact path="/" component={NavbarComp} />
           <Route exact path="/MapForecast" component={MapForecast} /> 
           <Route exact path="/graphs" component={Dashboard} /> 
           <Route exact path="/airqualitymap" component={AirQualityMap} /> 
-          <Route exact path="/forecastVideo" component={ForecastVideo} /> 
+          {/* <Route exact path="/forecastVideo" component={ForecastVideo} />  */}
 
           {/* <Route exact path="/insight" component={Insight} /> */}
         </Switch>

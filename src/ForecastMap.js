@@ -1,13 +1,13 @@
 import React, { useRef, useEffect, useState } from "react";
 import ArcGISMap from "@arcgis/core/Map";
 import MapView from "@arcgis/core/views/MapView";
-import LayerList from "@arcgis/core/widgets/LayerList";
+// import LayerList from "@arcgis/core/widgets/LayerList";
 // import Legend from '@arcgis/core/widgets/Legend';
 import TimeSlider from "@arcgis/core/widgets/TimeSlider";
 import WebMap from "@arcgis/core/WebMap";
 
 import GEOTIFF_DATA from "./geotiff.data.js";
-//import "./map.style.scss";
+// import "./map.style.css";
 
 const styles =  {
   container: {
@@ -46,7 +46,7 @@ function ForecastMap({ id }) {
       // Initialize Map
       const webmap = new WebMap({
         portalItem: { // autocasts as new PortalItem()
-          id: "be160ed79b4749f2bb119e99c56096fc"
+          id: "a44f96a7afc044eb80b11e4534b5f8a6"
         }
       });
 
@@ -58,7 +58,7 @@ function ForecastMap({ id }) {
         map: webmap,
         container: mapDiv.current,
         center: [-118.2437, 34.050],
-        zoom: 9,
+        zoom: 11,
       });
 
       // const legend = new Legend({
@@ -77,12 +77,12 @@ const timeSlider = new TimeSlider({
   mode: "instant",
   playrate: 10,
   fullTimeExtent: { // entire extent of the timeSlider
-    start: new Date(2021, 9, 13),
-    end: new Date(2021, 9, 14)
+    start: new Date(2022, 0, 25),
+    end: new Date(2022, 0, 26)
   },
   timeExtent: { // location of timeSlider thumbs
-    start: new Date(2021, 9, 13),
-    end: new Date(2021, 9, 14)
+    start: new Date(2022, 0, 25),
+    end: new Date(2022, 0, 26)
   }
 });
 view.ui.add(timeSlider, "bottom-left");
