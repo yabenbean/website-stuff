@@ -3,7 +3,9 @@ import {Tabs, Tab} from 'react-bootstrap';
 
 
 import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap";
-
+import AirQualityGauge from "./graphs/airqualitygauge.component.jsx";
+import Pmtwo from "./graphs/Pmtwo.component.jsx";
+import PmtenGauge from "./graphs/PmtenGauge.component.jsx";
 import AirQualityLineChart from "./graphs/airqualitylinechart.component.jsx";
 import EmissionsLinechart from "./graphs/emissionlinechart.component.jsx";
 import OpenWeatherMapHistorical from './graphs/historical/openweathermap-historical.component.jsx';
@@ -37,40 +39,56 @@ export default class Dashboard extends Component {
 
         return (
             <div>
-                 <div className="pad">
-        <Navbar fixed="top" variant="dark" expand="lg" className="center3 md-12 backgroundNav">
+                <Navbar variant="dark" expand="lg" className="center3 backgroundNav">
             <img src="/air.png" alt="air" width="100" height="100"/>
             <Navbar.Brand className="center3 textSize"><a>Predict What We Breathe</a></Navbar.Brand>
-            
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
-              <Nav className="center8">
-                <Nav.Link href="/">Home</Nav.Link>
-                <Nav.Link href="/graphs">Graphs</Nav.Link>
-        {/* <Nav.Link href="/hourly">Hourly</Nav.Link> */}
-        <Nav.Link href="/airqualitymap">AirqualityMap</Nav.Link>
-        <Nav.Link href="/MapForecast">ForecastMap</Nav.Link>
-        
-        
-              </Nav>
-            </Navbar.Collapse>
-            <form onSubmit={this.handleSubmit}>
-              <label className="form-label colorfont3 center5 padd ">LookUp Your City!</label>
+  <Container>
+  <form onSubmit={this.handleSubmit}>
+              <label className="form-label colorfont3 center5">Find Your City!</label>
               <input
-                className="center5 textboxSearch padd"
+                className="center2 textboxSearch"
                 type="text"
-                placeholder="   Enter zipcode here..."
+                placeholder="                     Enter zipcode or city name here..."
                 value={this.state.postalCode}
                 onChange={this.handleChange}
                 name="postalCode"
                 id="aq-lookup"
               />
             </form>
-          
- 
+
+            
+
+            {/* <div className="colorfont3 mt-3 p-5">
+              
+             
+             
+              
+            </div> */}
+            
+  </Container>
   </Navbar>
-       
-        </div>
+        <Navbar variant="dark" expand="lg" className="backgroundNav2">
+          <Container>
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+              <Nav className="center textSize">
+                <Nav.Link href="/">Home</Nav.Link>
+                <Nav.Link href="/graphs">Graphs</Nav.Link>
+        {/* <Nav.Link href="/hourly">Hourly</Nav.Link> */}
+        <Nav.Link href="/airqualitymap">Airquality Map</Nav.Link>
+        <Nav.Link href="/MapForecast">Forecast Map</Nav.Link>
+        
+        {/* <NavDropdown title="Maps" id="basic-nav-dropdown">
+        <NavDropdown.Item href="/airqualitymap">AIRQUALITY Map</NavDropdown.Item>
+        <NavDropdown.Item href="/MapForecast">FORECAST MAP</NavDropdown.Item>
+        <NavDropdown.Item href="/forecastVideo">FORECAST VIDEO</NavDropdown.Item>
+        </NavDropdown> */}
+                {/* <Nav.Link href="/insight">Insight</Nav.Link> */}
+              </Nav>
+            </Navbar.Collapse>
+          </Container>
+          
+        </Navbar>
             
             <div class="container mt-3 background  ">
                
@@ -84,11 +102,10 @@ export default class Dashboard extends Component {
                         onSelect={
                             (k) => this.changeKey(k)
                     }>
-                        <Tab eventKey='General' title='General Los Angeles'><OpenWeatherMapLive/></Tab>
-                        <Tab eventKey='Broadway' title='3rd and Broadway'><BroadwayLive/></Tab>
-                        <Tab eventKey='Coliseum' title='Memorial Coliseum'><MemorialColiseumLive/></Tab>
-                        <Tab eventKey='Lincoln' title='Lincoln Heights'><LincolnHeightsLive/></Tab>
-                        <Tab eventKey='Magnolia' title='7th and Magnolia'><MagnoliaLive/></Tab>
+                        <Tab eventKey='AQI' title='Air Quality Index'><AirQualityGauge/></Tab>
+                        <Tab eventKey='PM2.5' title='PM2.5'><Pmtwo/></Tab>
+                        <Tab eventKey='pm10' title='PM10'><PmtenGauge/></Tab>
+                        
                     </Tabs>
                 </div>
 
@@ -109,11 +126,8 @@ export default class Dashboard extends Component {
                             (k) => this.changeKey(k)
                     }>
                 
-                        <Tab eventKey='General' ><OpenWeatherMapHistorical/></Tab>
-                        <Tab eventKey='Broadway'><BroadwayHistorical/></Tab>
-                        <Tab eventKey='Coliseum' ><MemorialColiseumHistorical/></Tab>
-                        <Tab eventKey='Lincoln' ><LincolnHeightsHistorical/></Tab> 
-                        <Tab eventKey='Magnolia'><MagnoliaHistorical/></Tab>
+                        <Tab eventKey='General' ><AirQualityGauge/></Tab>
+                        
 
                     </Tabs>
                 </div>

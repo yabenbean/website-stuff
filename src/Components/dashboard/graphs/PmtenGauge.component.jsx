@@ -4,13 +4,13 @@ import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap";
 import ZingChart from 'zingchart-react'
 import axios, { Axios } from 'axios';
 
-class AirQualityLineChart extends Component{
+class PmtenGauge extends Component{
   didAirQualityLoad = false;
   constructor(props) {
     super(props);
-    this.PostcodeAQ ="https://api.weatherbit.io/v2.0/current?postal_code=";
+    this.PostcodeAQ ="https://api.weatherbit.io/v2.0/current/airquality?postal_code=";
     this.CityAQ= 
-      "https://api.weatherbit.io/v2.0/current/?city=";
+      "https://api.weatherbit.io/v2.0/current/airquality?city=";
       this.key = "5023eb593a7c49f5b6a6a9e5184b38df";
       this.state = {
         postalCode: "91732",
@@ -30,8 +30,8 @@ class AirQualityLineChart extends Component{
           
      
           this.setState({
-            cityName: data.data[0].city_name,
-            aqi: data.data[0].aqi,
+            cityName: data.city_name,
+            aqi: data.data[0].pm10,
           });
         });
   
@@ -46,8 +46,8 @@ class AirQualityLineChart extends Component{
         .then((data) => {
           this.didAirQualityLoad = true;
           this.setState({
-            cityName: data.data[0].city_name,
-            aqi: data.data[0].aqi,
+            cityName: data.city_name,
+            aqi: data.data[0].pm10,
           });
         });
   
@@ -94,49 +94,82 @@ class AirQualityLineChart extends Component{
         "type": "gauge",
         "scale-r": {
           "aperture": 200,
-          "values": "0:500:50",
-          
+          "values": "0:600:10",
+          center: {
+            visible: false
+          },
         
           "ring": {
-            "size": 5,
+            "size": 10,
             "rules": [{
-                "rule": "%v >= 0 && %v <= 50",
+                "rule": "%v >= 0 && %v <= 54",
                 "background-color": "green"
+                
               },
               {
-                "rule": "%v >= 50 && %v <= 100",
+                "rule": "%v >= 55 && %v <= 154",
                 "background-color": "yellow"
               },
               {
-                "rule": "%v >= 100 && %v <= 150",
+                "rule": "%v >=155  && %v <= 254",
                 "background-color": "orange"
               },
               {
-                "rule": "%v >= 150 && %v <= 200",
+                "rule": "%v >= 255 && %v <=354",
                 "background-color": "red"
               },
               {
-                "rule": "%v >= 200 && %v <=300",
+                "rule": "%v >= 355 && %v <=424",
                 "background-color": "purple"
               },
               {
-                "rule": "%v >= 300 && %v <=500",
+                "rule": "%v >= 425 && %v <=600",
                 "background-color": "maroon"
               }
             ]
           }
         }
       ,
-        "plot": {
-          "csize": "5%",
-          "size": "100%",
-          "background-color": "#000000"
-        },
+      plot: {
+        size: '100%',
+        valueBox: {
+          placement: 'center',
+          text: '%v', //default
+          fontSize: 20,
+          rules: [{
+              rule: '%v >= 0 && %v <= 54',
+              text: '%v (ug/m3) <br>Good<br>'+this.state.cityName+ ''
+            },
+            {
+              rule: '%v >= 55 && %v <= 154',
+              text: '%v (ug/m3) <br>Moderate<br>'+this.state.cityName+ ''
+            },
+            {
+              rule: '%v >=155  && %v <= 254',
+              text: '%v (ug/m3) <br>Unsafe for Some Groups<br>'+this.state.cityName+ ''
+            },
+            {
+              rule: '%v >= 255 && %v <=354 ',
+              text: '%v(ug/m3) <br>Unhealthy<br>'+this.state.cityName+ ''
+            },
+            {
+              rule: '%v >= 355 && %v <=424',
+              text: '%v (ug/m3)<br>Very Unhealthy <br>'+this.state.cityName+ ''
+            },
+            {
+              rule: '%v >= 425 && %v <=600',
+              text: '%v (ug/m3)<br>Hazardous <br>'+this.state.cityName+ ''
+            },
+          ]
+        }
+      },
         "series": [{
-          "values": [this.state.aqi]
+          "values": [this.state.aqi],
+          backgroundColor: 'black',
+          "indicator": [10,0,0,0,0.5]
         }]
       }
-        
+      
           return <ZingChart data={myConfig} />
     }
 
@@ -144,4 +177,4 @@ class AirQualityLineChart extends Component{
     
 
 }
-export default AirQualityLineChart;
+export default PmtenGauge;
