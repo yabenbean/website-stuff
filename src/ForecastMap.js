@@ -75,7 +75,7 @@ const timeSlider = new TimeSlider({
   // show data within a given time range
   // in this case data within one year
   mode: "instant",
-  playrate: 10,
+  playRate: 4000,
   fullTimeExtent: { // entire extent of the timeSlider
     start: new Date(2022, 0, 25),
     end: new Date(2022, 0, 26)

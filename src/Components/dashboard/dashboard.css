@@ -3,6 +3,12 @@
     justify-content:center;
     width: 80vw;
     }
+.center8{
+    display: flex;
+    justify-content:center;
+    column-gap: 25%;
+    padding-left: 10%;
+}
  .center2 {
         display: flex;
         justify-content:center;
@@ -19,6 +25,7 @@
 .center5{
     display: flex;
     justify-content: center;
+    column-gap: 10%;
 }
 .center3{
     display: flex;
@@ -38,6 +45,11 @@
     color: black;
     column-gap: 10vw;
 }
+.textSize3{
+    font-size: 1vw;
+    color: black;
+    column-gap: 10vw;
+}
 .backgroundNav{
     background-color:#191970;
 }
@@ -48,4 +60,13 @@
 .textboxSearch{
     border-radius: 25px;
     opacity: 0.5;
+}
+.padd{
+    column-span: 20vh;
+}
+.pad{
+    padding-bottom: 10%;
+}
+.pad2{
+    padding-bottom: 3%;
 }

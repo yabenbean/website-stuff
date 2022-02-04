@@ -37,56 +37,40 @@ export default class Dashboard extends Component {
 
         return (
             <div>
-                <Navbar variant="dark" expand="lg" className="center3 backgroundNav">
+                 <div className="pad">
+        <Navbar fixed="top" variant="dark" expand="lg" className="center3 md-12 backgroundNav">
             <img src="/air.png" alt="air" width="100" height="100"/>
             <Navbar.Brand className="center3 textSize"><a>Predict What We Breathe</a></Navbar.Brand>
-  <Container>
-  <form onSubmit={this.handleSubmit}>
-              <label className="form-label colorfont3 center5">Find Your City!</label>
+            
+            <Navbar.Toggle aria-controls="basic-navbar-nav" />
+            <Navbar.Collapse id="basic-navbar-nav">
+              <Nav className="center8">
+                <Nav.Link href="/">Home</Nav.Link>
+                <Nav.Link href="/graphs">Graphs</Nav.Link>
+        {/* <Nav.Link href="/hourly">Hourly</Nav.Link> */}
+        <Nav.Link href="/airqualitymap">AirqualityMap</Nav.Link>
+        <Nav.Link href="/MapForecast">ForecastMap</Nav.Link>
+        
+        
+              </Nav>
+            </Navbar.Collapse>
+            <form onSubmit={this.handleSubmit}>
+              <label className="form-label colorfont3 center5 padd ">LookUp Your City!</label>
               <input
-                className="center2 textboxSearch"
+                className="center5 textboxSearch padd"
                 type="text"
-                placeholder="                     Enter zipcode or city name here..."
+                placeholder="   Enter zipcode here..."
                 value={this.state.postalCode}
                 onChange={this.handleChange}
                 name="postalCode"
                 id="aq-lookup"
               />
             </form>
-
-            
-
-            {/* <div className="colorfont3 mt-3 p-5">
-              
-             
-             
-              
-            </div> */}
-            
-  </Container>
-  </Navbar>
-        <Navbar variant="dark" expand="lg" className="backgroundNav2">
-          <Container>
-            <Navbar.Toggle aria-controls="basic-navbar-nav" />
-            <Navbar.Collapse id="basic-navbar-nav">
-              <Nav className="center textSize">
-                <Nav.Link href="/">Home</Nav.Link>
-                <Nav.Link href="/graphs">Graphs</Nav.Link>
-        {/* <Nav.Link href="/hourly">Hourly</Nav.Link> */}
-        <Nav.Link href="/airqualitymap">Airquality Map</Nav.Link>
-        <Nav.Link href="/MapForecast">Forecast Map</Nav.Link>
-        
-        {/* <NavDropdown title="Maps" id="basic-nav-dropdown">
-        <NavDropdown.Item href="/airqualitymap">AIRQUALITY Map</NavDropdown.Item>
-        <NavDropdown.Item href="/MapForecast">FORECAST MAP</NavDropdown.Item>
-        <NavDropdown.Item href="/forecastVideo">FORECAST VIDEO</NavDropdown.Item>
-        </NavDropdown> */}
-                {/* <Nav.Link href="/insight">Insight</Nav.Link> */}
-              </Nav>
-            </Navbar.Collapse>
-          </Container>
           
-        </Navbar>
+ 
+  </Navbar>
+       
+        </div>
             
             <div class="container mt-3 background  ">
                

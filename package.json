@@ -18,7 +18,9 @@
     "react-redux": "^7.2.6",
     "react-router-dom": "^5.3.0",
     "react-scripts": "4.0.3",
-    "web-vitals": "^1.1.2"
+    "web-vitals": "^1.1.2",
+    "zingchart": "^2.9.8-1",
+    "zingchart-react": "^3.1.2"
   },
   "scripts": {
     "start": "react-scripts start",

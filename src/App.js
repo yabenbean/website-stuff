@@ -16,6 +16,7 @@ function App() {
   loadCss(); 
   return (
     <div className="Color">
+      
       {/* <NavbarComp /> */}
       <Router>
         <Switch>
