@@ -45,3 +45,11 @@
  height: 100vh;
  width: 20vw;
 }
+.size4{
+  height: 100px;
+  /* display:none; */
+  width: 200px;
+}
+.pad4{
+  padding-bottom: 10vh;
+}

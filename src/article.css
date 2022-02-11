@@ -1,0 +1,22 @@
+.articles img{
+    height: 200px;
+    width: 18rem;
+    object-fit:fill;
+
+}
+
+@media screen and (max-width: 200px){
+    .articles{
+        display:flex;
+    }
+}
+.articles a{
+         color: black;
+    }
+
+     .articles a:hover{
+         color: darkgoldenrod
+ }
+ .underline{
+    text-decoration: underline;
+  }

@@ -1,8 +1,9 @@
 import * as React from "react";
-import { Container, Navbar, Nav, NavDropdown } from "react-bootstrap";
+import { Container, Navbar, Nav, NavDropdown, Card, Col, Row } from "react-bootstrap";
 import { setAirQuality } from "../redux/actions/spinner.actions.js";
 import ".././airquality.style.css";
 import axios, { Axios } from 'axios';
+import Articles from "../articles.js"
 import Hourly from "../forecastpage.js";
 import forecastpage from "../forecastpage";
 import ForecastMap from "../ForecastMap.js";
@@ -261,7 +262,9 @@ class NavbarComp extends React.Component {
   </Navbar>
        
         </div>
+        
       <div className="center5 row">
+        
        {/* <form onSubmit={this.handleSubmit}>
               <label className="form-label center4">Find Your City!</label>
               <input
@@ -274,8 +277,9 @@ class NavbarComp extends React.Component {
                 id="aq-lookup"
               />
             </form> */}
+            
         <div className="center5 row pt-4 pb-4">
-        
+        <h4 className="underline">AirQuality:</h4>
        
           <div className=" pb-4 d-flex center5">
         
@@ -290,6 +294,7 @@ class NavbarComp extends React.Component {
             <div className="gage">
           <iframe title="Example 6" height="360" src={urlchange2} width="230"></iframe>
           </div>
+          
           {/* </div> */}
            
            
@@ -301,10 +306,7 @@ class NavbarComp extends React.Component {
          
         
           <div className="weather-search-results">
-          <Container>
-
-            
-  </Container>
+         
           <div className="col-lg-8">
             <h2> Location: {this.state.cityName}, {this.state.stateCode}</h2>
             <div className="aq-details">
@@ -412,21 +414,24 @@ class NavbarComp extends React.Component {
 
             
           </div>
+          <h4 className="underline">NEWS:</h4>
+            <div>
+            
+          <Articles/>
+          </div>
+          
           
          
-
-          {/* <div className="center5">
-            <div className="gage">
-          <iframe title="Example 6" height="360" src={urlchange2} width="230"></iframe>
-          </div>
-          </div> */}
         </div>
         
       
 
         
       </div>
-    );
+      
+         
+          
+    
       </div>
     );
   }

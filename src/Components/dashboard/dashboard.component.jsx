@@ -92,21 +92,15 @@ export default class Dashboard extends Component {
             
             <div class="container mt-3 background  ">
                
-                <div class="center" class="title" className="col-12">
-                    <Tabs defaultActiveKey={
-                            this.state.key
-                        }
-                        activeKey={
-                            this.state.key
-                        }
-                        onSelect={
-                            (k) => this.changeKey(k)
-                    }>
-                        <Tab eventKey='AQI' title='Air Quality Index'><AirQualityGauge/></Tab>
-                        <Tab eventKey='PM2.5' title='PM2.5'><Pmtwo/></Tab>
-                        <Tab eventKey='pm10' title='PM10'><PmtenGauge/></Tab>
+                <div class="center" className="col-12">
+                  <h1 class='center'>      AIR QUALITY</h1>
+                   <AirQualityGauge/>
+                   <h1 class='center'>      PM 2.5</h1>
+                        <Pmtwo/>
+                        <h1 class='center'>     PM 10</h1>
+                        <PmtenGauge/>
                         
-                    </Tabs>
+                 
                 </div>
 
                 <br/>
@@ -116,20 +110,7 @@ export default class Dashboard extends Component {
 
 
                 <div class="center "className="col-12">
-                    <Tabs defaultActiveKey={
-                            this.state.key
-                        }
-                        activeKey={
-                            this.state.key
-                        }
-                        onSelect={
-                            (k) => this.changeKey(k)
-                    }>
-                
-                        <Tab eventKey='General' ><AirQualityGauge/></Tab>
-                        
-
-                    </Tabs>
+                   
                 </div>
                 <br/>
                 <br/>
