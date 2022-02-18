@@ -8,12 +8,11 @@ class AirQualityGauge extends Component{
   didAirQualityLoad = false;
   constructor(props) {
     super(props);
-    this.PostcodeAQ ="https://api.weatherbit.io/v2.0/current/airquality?postal_code=";
-    this.CityAQ= 
-      "https://api.weatherbit.io/v2.0/current/airquality?city=";
-      this.key = "5023eb593a7c49f5b6a6a9e5184b38df";
+    this.PostcodeAQ ="https://api.weatherbit.io/v2.0/current?postal_code=";
+    this.CityAQ= "https://api.weatherbit.io/v2.0/current/airquality?city=";
+      this.key = "228cdead8acb4e5d994331522e25f011";
       this.state = {
-        postalCode: "91732",
+        postalCode: "90006",
         cityName: null,
         aqi: null,
       };
@@ -30,7 +29,7 @@ class AirQualityGauge extends Component{
           
      
           this.setState({
-            cityName: data.city_name,
+            cityName: data.data[0].city_name,
             aqi: data.data[0].aqi,
           });
         });
@@ -41,15 +40,16 @@ class AirQualityGauge extends Component{
       const { setAirQuality } = this.props;
    
   
-      fetch(this.CityAQ + this.state.cityName + "&key=" + this.key)
-        .then((response) => response.json())
-        .then((data) => {
-          this.didAirQualityLoad = true;
-          this.setState({
-            cityName: data.city_name,
-            aqi: data.data[0].aqi,
-          });
+      fetch(this.CityAqiUrl + this.state.postalCode + "&country=US" + "&key=" + this.key)
+      .then((response) => response.json())
+      .then((data) => {
+        this.didAirQualityLoad = true;
+        this.setState({
+          cityName: data.data[0].city_name,
+          stateCode: data.data[0].state_code,
+          aqiCode: data.data[0].aqi,
         });
+      });
   
      
     }
@@ -63,7 +63,7 @@ class AirQualityGauge extends Component{
         let parsed = parseInt(this.state.postalCode);
     
         if (isNaN(parsed)){
-          this.retrieveDataFromCity(this.state.cityName);
+          this.retrieveDataFromCity(this.state.postalCode);
         }else{
           try {
             this.retrieveDataFromPostal(this.state.postalCode);
@@ -73,11 +73,11 @@ class AirQualityGauge extends Component{
           }
         }
         
-        this.setState({ postalCode: "" });
+        this.setState({ postalCode:this.state.postalCode});
       };
     
       handleChange = (event) => {
-        const { name, value }  = event.target;
+        const { name, value } = event.target;
         this.setState({
           [name]: value,
         });
@@ -170,7 +170,10 @@ class AirQualityGauge extends Component{
         }]
       }
       
-          return <ZingChart data={myConfig} />
+          return <ZingChart data={myConfig} 
+          />
+          
+          
     }
 
     

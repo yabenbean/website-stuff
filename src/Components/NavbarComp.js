@@ -24,9 +24,10 @@ class NavbarComp extends React.Component {
     this.CityAqiUrl = "https://api.weatherbit.io/v2.0/current/airquality?city="
     // this.widget = "https://widget.airnow.gov/aq-flag-widget/?a=today&z=90012&n=losAngeles"
     // this.key = process.env.REACT_APP_WEATHERBIT_KEY;
-    this.key = "5023eb593a7c49f5b6a6a9e5184b38df";
-    // this.key = "f872fbc28c5b46b089be2dfb0096166f";
+    // this.key = "5023eb593a7c49f5b6a6a9e5184b38df";
+    this.key = "228cdead8acb4e5d994331522e25f011";
     // this.key = "db5d97de2f5e423bb3dd7e130101a7dd";
+    // this.key = "228cdead8acb4e5d994331522e25f011";
     this.state = {
       postalCode: "90006",
       check: null,
@@ -53,7 +54,7 @@ class NavbarComp extends React.Component {
       .then((response) => response.json())
       .then((data) => {
         this.setState({
-          postalCode: "",
+          postalCode: this.state.postalCode,
           //cityName: data.city_name,
           //stateCode: data.state_code,
 
@@ -121,9 +122,8 @@ class NavbarComp extends React.Component {
       .then((response) => response.json())
       .then((data) => {
         this.setState({
-          postalCode: "",
-          //cityName: data.city_name,
-          //stateCode: data.state_code,
+          postalCode: this.state.postalCode,
+    
 
           weatherTemp: [
             data.data[0].temp,
@@ -197,7 +197,7 @@ class NavbarComp extends React.Component {
         }
       }
       
-      this.setState({ postalCode: "" });
+      this.setState({ postalCode:this.state.postalCode});
     };
   
     handleChange = (event) => {
@@ -223,6 +223,8 @@ class NavbarComp extends React.Component {
 
 
   render() {
+    const urlchange3 = "https://widget.airnow.gov/aq-flag-widget/?a=current&z="+this.state.postalCode+"&n="+this.state.cityName
+    const urlchange4 = "https://widget.airnow.gov/aq-flag-widget/?a=tomorrow&z="+this.state.postalCode+"&n="+this.state.cityName
     const urlchange2 = "https://widget.airnow.gov/aq-flag-widget/?city="+this.state.cityName+"&state="+this.state.stateCode+"&country=USA&n="+this.state.cityName
     const urlchange = "https://widget.airnow.gov/aq-dial-widget-primary-pollutant/?city="+this.state.cityName+"&state="+this.state.stateCode+"&country=USA&transparent=true"
     
@@ -277,7 +279,6 @@ class NavbarComp extends React.Component {
                 id="aq-lookup"
               />
             </form> */}
-            
         <div className="center5 row pt-4 pb-4">
         <h4 className="underline">AirQuality:</h4>
        
@@ -285,14 +286,21 @@ class NavbarComp extends React.Component {
         
           
           <div className="gage">
-                  <iframe title="Example 6" height="380" src= {urlchange}  width="600" ></iframe>
+                  <iframe title="Example 6" height="380" src= {urlchange}  width="500" ></iframe>
                    {/* <iframe title="Example 6" height="360" src={urlchange2} width="230"></iframe> */}
 
 
                 </div>
                 {/* <div className="center5"> */}
-            <div className="gage">
+            <div className="gage"><h3>Today's Pollutants</h3>
           <iframe title="Example 6" height="360" src={urlchange2} width="230"></iframe>
+          
+          </div>
+          <div className="gage"><h3>Pollutants</h3>
+          <iframe  height="300" src={urlchange3} width="230"></iframe>
+          </div>
+          <div className="gage"><h4>Tommorow's AirQuality</h4>
+           <iframe height="350" src={urlchange4} width="230"></iframe>
           </div>
           
           {/* </div> */}
@@ -414,9 +422,9 @@ class NavbarComp extends React.Component {
 
             
           </div>
-          <h4 className="underline">NEWS:</h4>
+         
             <div>
-            
+            <h4 className="underline">NEWS:</h4>
           <Articles/>
           </div>
           

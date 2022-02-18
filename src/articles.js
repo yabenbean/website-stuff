@@ -55,7 +55,7 @@ export default class Articles extends Component {
             {this.state.articles.map((value, index) => {
                  return <div key={index} className='articles'>
            <Col>
-           <Card style={{ width: '18rem' }}>
+                <Card style={{ width: '18rem' }}>
                 <Card.Img variant="top" src={value.image.url} />
                 <Card.Body>
                   <Card.Title>{value.title}</Card.Title>

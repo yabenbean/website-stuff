@@ -15,7 +15,9 @@ import Hourly from './forecastpage';
 function App() {
   loadCss(); 
   return (
-    <div className="Color">
+    <div className="backgroungImage">
+      
+
       
       {/* <NavbarComp /> */}
       <Router>

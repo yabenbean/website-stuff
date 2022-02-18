@@ -8,14 +8,15 @@ class PmtenGauge extends Component{
   didAirQualityLoad = false;
   constructor(props) {
     super(props);
-    this.PostcodeAQ ="https://api.weatherbit.io/v2.0/current/airquality?postal_code=";
+    this.PostcodeAQ ="https://api.weatherbit.io/v2.0/current?postal_code=";
     this.CityAQ= 
       "https://api.weatherbit.io/v2.0/current/airquality?city=";
-      this.key = "5023eb593a7c49f5b6a6a9e5184b38df";
+      // this.key = "5023eb593a7c49f5b6a6a9e5184b38df";
+      this.key = "228cdead8acb4e5d994331522e25f011";
       this.state = {
-        postalCode: "91732",
+        postalCode: "90006",
         cityName: null,
-        aqi: null,
+        aqiCode: null,
       };
     }
 
@@ -30,8 +31,8 @@ class PmtenGauge extends Component{
           
      
           this.setState({
-            cityName: data.city_name,
-            aqi: data.data[0].pm10,
+            cityName: data.data[0].city_name,
+            aqiCode: data.data[0].aqi,
           });
         });
   
@@ -46,8 +47,8 @@ class PmtenGauge extends Component{
         .then((data) => {
           this.didAirQualityLoad = true;
           this.setState({
-            cityName: data.city_name,
-            aqi: data.data[0].pm10,
+            cityName: data.data[0].city_name,
+            aqiCode: data.data[0].aqi,
           });
         });
   
@@ -164,7 +165,7 @@ class PmtenGauge extends Component{
         }
       },
         "series": [{
-          "values": [this.state.aqi],
+          "values": [this.state.aqiCode],
           backgroundColor: 'black',
           "indicator": [10,0,0,0,0.5]
         }]
