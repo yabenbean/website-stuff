@@ -1,12 +1,9 @@
 import * as React from "react";
 import { Container, Navbar, Nav, NavDropdown, Card, Col, Row } from "react-bootstrap";
-import { setAirQuality } from "../redux/actions/spinner.actions.js";
 import ".././airquality.style.css";
 import axios, { Axios } from 'axios';
 import Articles from "../articles.js"
-import Hourly from "../forecastpage.js";
-import forecastpage from "../forecastpage";
-import ForecastMap from "../ForecastMap.js";
+
 
 
 
@@ -25,8 +22,8 @@ class NavbarComp extends React.Component {
     // this.widget = "https://widget.airnow.gov/aq-flag-widget/?a=today&z=90012&n=losAngeles"
     // this.key = process.env.REACT_APP_WEATHERBIT_KEY;
     // this.key = "5023eb593a7c49f5b6a6a9e5184b38df";
-    this.key = "228cdead8acb4e5d994331522e25f011";
-    // this.key = "db5d97de2f5e423bb3dd7e130101a7dd";
+    // this.key = "228cdead8acb4e5d994331522e25f011";
+    this.key = "db5d97de2f5e423bb3dd7e130101a7dd";
     // this.key = "228cdead8acb4e5d994331522e25f011";
     this.state = {
       postalCode: "90006",
@@ -296,9 +293,9 @@ class NavbarComp extends React.Component {
           <iframe title="Example 6" height="360" src={urlchange2} width="230"></iframe>
           
           </div>
-          <div className="gage"><h3>Pollutants</h3>
+          {/* <div className="gage"><h3>Pollutants</h3>
           <iframe  height="300" src={urlchange3} width="230"></iframe>
-          </div>
+          </div> */}
           <div className="gage"><h4>Tommorow's AirQuality</h4>
            <iframe height="350" src={urlchange4} width="230"></iframe>
           </div>

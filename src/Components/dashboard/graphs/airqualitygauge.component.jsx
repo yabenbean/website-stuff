@@ -10,11 +10,11 @@ class AirQualityGauge extends Component{
     super(props);
     this.PostcodeAQ ="https://api.weatherbit.io/v2.0/current?postal_code=";
     this.CityAQ= "https://api.weatherbit.io/v2.0/current/airquality?city=";
-      this.key = "228cdead8acb4e5d994331522e25f011";
+      this.key = "db5d97de2f5e423bb3dd7e130101a7dd";
       this.state = {
         postalCode: "90006",
         cityName: null,
-        aqi: null,
+        aqiCode: null,
       };
     }
 
@@ -30,7 +30,7 @@ class AirQualityGauge extends Component{
      
           this.setState({
             cityName: data.data[0].city_name,
-            aqi: data.data[0].aqi,
+            aqiCode: data.data[0].aqi,
           });
         });
   
@@ -73,7 +73,7 @@ class AirQualityGauge extends Component{
           }
         }
         
-        this.setState({ postalCode:this.state.postalCode});
+        this.setState({ postalCode:""});
       };
     
       handleChange = (event) => {
@@ -164,7 +164,7 @@ class AirQualityGauge extends Component{
         }
       },
         "series": [{
-          "values": [this.state.aqi],
+          "values": [this.state.aqiCode],
           backgroundColor: 'black',
           "indicator": [10,0,0,0,0.5]
         }]

@@ -67,15 +67,15 @@
     margin-left: 100px;
     border-radius: 25px;
     padding-top: 30px;
-    width:300px;
-    height: 480px;
+    width:350px;
+    height: 450px;
     background-color: white;
     font-size: small;
 }
 .gage{
    
     width: 300px;
-    height: 450px;
+    height: 480px;
     /* display: block; */
     margin-left: 3px;
     padding-left: 3px;

@@ -57,8 +57,8 @@ function ForecastMap({ id }) {
       const view = new MapView({
         map: webmap,
         container: mapDiv.current,
-        center: [-118.2437, 34.050],
-        zoom: 11,
+        center: [-118.2437, 34.000],
+        zoom: 10,
       });
 
       // const legend = new Legend({
@@ -77,12 +77,12 @@ const timeSlider = new TimeSlider({
   mode: "instant",
   playRate: 4000,
   fullTimeExtent: { // entire extent of the timeSlider
-    start: new Date(2022, 0, 25),
-    end: new Date(2022, 0, 26)
+    start: new Date(2022, 1, 25),
+    end: new Date(2022, 1, 26)
   },
   timeExtent: { // location of timeSlider thumbs
-    start: new Date(2022, 0, 25),
-    end: new Date(2022, 0, 26)
+    start: new Date(2022, 1, 25),
+    end: new Date(2022, 1, 26)
   }
 });
 view.ui.add(timeSlider, "bottom-left");
