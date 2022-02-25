@@ -13,10 +13,7 @@
 .articles a{
          color: black;
     }
-
+    
      .articles a:hover{
          color: darkgoldenrod
  }
- .underline{
-    text-decoration: underline;
-  }

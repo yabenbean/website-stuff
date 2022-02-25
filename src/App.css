@@ -41,3 +41,7 @@
 
   background-color: #2198c2;
 }
+.backgroungImage{
+  background-image: url('los-angeles-air-pollution.jpeg');
+  background-size: cover;
+}
