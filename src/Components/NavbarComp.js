@@ -1,9 +1,9 @@
 import * as React from "react";
-import { Container, Navbar, Nav, NavDropdown, Card, Col, Row } from "react-bootstrap";
+import { Container, Navbar, Nav, NavDropdown, Card, Grid, Col, Row, CardGroup, Button} from "react-bootstrap";
 import ".././airquality.style.css";
 import axios, { Axios } from 'axios';
-import Articles from "../articles.js"
-
+import Articles from "../articles";
+// import Articles from "../articles.js"
 
 
 
@@ -23,11 +23,13 @@ class NavbarComp extends React.Component {
     // this.key = process.env.REACT_APP_WEATHERBIT_KEY;
     // this.key = "5023eb593a7c49f5b6a6a9e5184b38df";
     // this.key = "228cdead8acb4e5d994331522e25f011";
-    this.key = "db5d97de2f5e423bb3dd7e130101a7dd";
-    // this.key = "228cdead8acb4e5d994331522e25f011";
+    // this.key = "db5d97de2f5e423bb3dd7e130101a7dd";
+    this.key = "228cdead8acb4e5d994331522e25f011";
+    this.key2 = '1002ab6d1amsh969613d6623a143p13b559jsn0395c6b6fa85'
     this.state = {
       postalCode: "90006",
       check: null,
+      articles: [],
       cityName: null,
       stateCode: null,
       aqiCode: null,
@@ -37,6 +39,7 @@ class NavbarComp extends React.Component {
       weatherMinTemp: [null, null, null, null, null],
       weatherMaxTemp: [null, null, null, null, null],
       date: [null, null, null, null, null],
+      
     };
   }
 
@@ -52,8 +55,6 @@ class NavbarComp extends React.Component {
       .then((data) => {
         this.setState({
           postalCode: this.state.postalCode,
-          //cityName: data.city_name,
-          //stateCode: data.state_code,
 
           weatherTemp: [
             data.data[0].temp,
@@ -174,9 +175,35 @@ class NavbarComp extends React.Component {
    
   }
 
-  componentDidMount() {
+ 
+  retrieveData(){
+    fetch("https://contextualwebsearch-websearch-v1.p.rapidapi.com/api/search/NewsSearchAPI?q="+this.state.cityName+"%20AirQuality&pageNumber=1&pageSize=4&autoCorrect=true&fromPublishedDate=null&toPublishedDate=null", {
+        "method": "GET",
+        "headers": {
+            "x-rapidapi-host": "contextualwebsearch-websearch-v1.p.rapidapi.com",
+            "x-rapidapi-key": this.key2
+        }
+    })
+    .then((response) => response.json())
+    .then(data => {
+        console.log(data);
+        this.setState({
+          
+            articles: data.value
+        });
+    })
+    .catch(err => {
+        console.error(err);
+    });
+}
+
+
+componentDidMount(){
+    console.log("Articles mounted...")
     this.retrieveDataFromPostal();
-  }
+    // this.retrieveDataFromCity();
+    this.retrieveData();
+}
 
   handleSubmit = (event) => {
       event.preventDefault();
@@ -185,9 +212,12 @@ class NavbarComp extends React.Component {
   
       if (isNaN(parsed)){
         this.retrieveDataFromCity(this.state.postalCode);
+    
       }else{
         try {
           this.retrieveDataFromPostal(this.state.postalCode);
+          this.retrieveData(this.state.postalCode);
+          
         } catch (e) {
           alert("Not a valid zipcode");
           
@@ -201,6 +231,7 @@ class NavbarComp extends React.Component {
       const { name, value } = event.target;
       this.setState({
         [name]: value,
+        
       });
     };
 
@@ -208,7 +239,7 @@ class NavbarComp extends React.Component {
     axios({
       method: 'GET',
       url:"https://widget.airnow.gov/aq-dial-widget-primary-pollutant/?city="+this.state.cityName+"&state="+this.state.stateCode+"&country=USA&transparent=true"
-
+      
     }).then((resp) => {
       this.setState({
         aqi: resp.data.data,
@@ -245,17 +276,17 @@ class NavbarComp extends React.Component {
               </Nav>
             </Navbar.Collapse>
             <form onSubmit={this.handleSubmit}>
-              <label className="form-label colorfont3 center5 padd ">LookUp Your City!</label>
-              <input
-                className="center5 textboxSearch padd"
-                type="text"
-                placeholder="   Enter zipcode here..."
-                value={this.state.postalCode}
-                onChange={this.handleChange}
-                name="postalCode"
-                id="aq-lookup"
-              />
-            </form>
+                <label className="form-label colorfont3 center5 padd ">LookUp Your City!</label>
+                <input
+                  className="center5 textboxSearch padd"
+                  type="text"
+                  placeholder="   Enter zipcode here..."
+                  value={this.state.postalCode}
+                  onChange={this.handleChange}
+                  name="postalCode"
+                  id="aq-lookup"
+                />
+              </form>
           
  
   </Navbar>
@@ -277,7 +308,7 @@ class NavbarComp extends React.Component {
               />
             </form> */}
         <div className="center5 row pt-4 pb-4">
-        <h4 className="underline">AirQuality:</h4>
+        <h4 className="underline">AirQuality: {this.state.cityName}</h4>
        
           <div className=" pb-4 d-flex center5">
         
@@ -422,7 +453,31 @@ class NavbarComp extends React.Component {
          
             <div>
             <h4 className="underline">NEWS:</h4>
-          <Articles/>
+            <Container>  
+            
+            <Row lg='auto'>
+            
+            {this.state.articles.map((value, index) => {
+                 return <div key={index} className='articles'>
+           <Col>
+                <Card style={{ width: '18rem' }}>
+                <Card.Img variant="top" src={value.image.url} />
+                <Card.Body>
+                  <Card.Title>{value.title}</Card.Title>
+                  <Card.Text>
+                  {value.description}
+                  </Card.Text>
+                  <Button variant="light"> <a href={value.url}>Click More Information</a></Button>
+                </Card.Body>
+                 
+              </Card>
+             </Col>
+            </div>  
+                    
+            })}
+              </Row>
+     
+               </Container>
           </div>
           
           

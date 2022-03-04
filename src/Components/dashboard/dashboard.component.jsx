@@ -21,7 +21,7 @@ export default class Dashboard extends Component {
     this.PostcodeAQ ="https://api.weatherbit.io/v2.0/current?postal_code=";
     this.CityAQ= "https://api.weatherbit.io/v2.0/current/airquality?city=";
     this.openAQ="http://api.openweathermap.org/data/2.5/air_pollution?"
-      this.key = "db5d97de2f5e423bb3dd7e130101a7dd";
+      this.key = "228cdead8acb4e5d994331522e25f011";
       this.key2 = '6e53e43c793da4d204db25502e48c33e'; //open weather key
       this.state = {
         postalCode: "90006",
